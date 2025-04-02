@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { ArrowRight, Calendar, Clock, MapPin, Users, ChevronDown, CheckCircle2 } from "lucide-react"
+import { ArrowRight, Calendar, Clock, MapPin, Users, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -155,14 +155,18 @@ export default function RoboticsEvent() {
           style={{ opacity, scale, y }}
           className="container relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center rounded-full border border-[#4dabf7]/20 bg-[#4dabf7]/10 px-3 py-1 text-sm text-[#4dabf7]"
-          >
-            <span>September 2025 • Season 1</span>
-          </motion.div>
+      <div className="flex w-full justify-end">
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="inline-flex items-end rounded-full border border-[#4dabf7]/20 bg-[#4dabf7]/10 px-3 py-1 text-sm text-[#4dabf7]"
+  >
+    <span>Season 1</span>
+  </motion.div>
+</div>
+
+
 
           <motion.h1
             initial={{ opacity: 0 }}
@@ -301,7 +305,7 @@ export default function RoboticsEvent() {
                     <Calendar className="h-5 w-5 text-[#4dabf7]" />
                     <h3 className="font-bold text-white">Date & Time</h3>
                   </div>
-                  <p className="text-[#a5d8ff]/80">September 2025, 9:00 AM UAE Time</p>
+                  <p className="text-[#a5d8ff]/80">24-25 September 2025</p>
                 </div>
                 <div className="rounded-lg bg-white/5 p-4">
                   <div className="mb-2 flex items-center gap-2">
@@ -375,8 +379,9 @@ export default function RoboticsEvent() {
               {
                 title: "Expert Insights",
                 description: "Hear from industry leaders and experts who will share their knowledge and experiences.",
-                icon: "🧠",
+                icon: "🎙️",
               },
+              
               {
                 title: "Interactive Q&A",
                 description:
@@ -431,13 +436,13 @@ export default function RoboticsEvent() {
               <TabsList className="mb-8 grid w-full grid-cols-2 bg-white/5">
                 <TabsTrigger
                   value="morning"
-                  className="data-[state=active]:bg-[#4dabf7] data-[state=active]:text-white"
+                  className="data-[state=active]:bg-[#4dabf7] data-[state=active]:text-white text-white"
                 >
                   Morning Sessions
                 </TabsTrigger>
                 <TabsTrigger
                   value="afternoon"
-                  className="data-[state=active]:bg-[#4dabf7] data-[state=active]:text-white"
+                  className="data-[state=active]:bg-[#4dabf7] data-[state=active]:text-white text-white"
                 >
                   Afternoon Sessions
                 </TabsTrigger>
