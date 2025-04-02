@@ -43,7 +43,8 @@ export default function RoboticsEvent() {
   }
 
   // Event date - September 15, 2025
-  const eventDate = new Date(2025, 8, 15, 9, 0, 0)
+  const eventDate = new Date(2025, 8, 24, 9, 0, 0);
+
 
   // Initialize robocontainer particles
   useEffect(() => {
@@ -176,7 +177,7 @@ export default function RoboticsEvent() {
               <TypewriterEffect text="Live Simulation" delay={1.5} />
             </span>
           </motion.h1>
-
+          <h2 className="py-5">24-25 September 2025</h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -204,7 +205,7 @@ export default function RoboticsEvent() {
             >
               Register Now <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button
+            {/* <Button
               size="lg"
               variant="outline"
               className="border-[#4dabf7]/20 bg-[#4dabf7]/10 text-[#4dabf7] hover:bg-[#4dabf7]/20"
@@ -215,7 +216,7 @@ export default function RoboticsEvent() {
               }}
             >
               View Agenda <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
+            </Button> */}
           </motion.div>
 
           <motion.div
@@ -244,7 +245,7 @@ export default function RoboticsEvent() {
           <div className="absolute right-1/4 top-2/3 h-96 w-96 rounded-full bg-[#22b8cf]/10 blur-3xl"></div>
         </div>
 
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        {/* <div className="absolute bottom-8 left-0 right-0 flex justify-center">
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
@@ -258,7 +259,7 @@ export default function RoboticsEvent() {
             <span className="mb-2 text-sm text-[#a5d8ff]/60">Scroll to explore</span>
             <ChevronDown className="h-6 w-6 text-[#a5d8ff]/60" />
           </motion.div>
-        </div>
+        </div> */}
       </section>
 
       {/* About Section */}
@@ -335,7 +336,7 @@ export default function RoboticsEvent() {
             >
              <div className="relative h-[700px] w-full max-w-[500px]">
             <video 
-             src="/video/WhatsApp Video 2025-03-29 at 10.56.52 PM.mp4" 
+             src="/video/WhatsApp Video 2025-04-02 at 2.35.52 PM.mp4" 
              autoPlay 
              loop 
              muted 
