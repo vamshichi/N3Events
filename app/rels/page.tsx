@@ -1,6 +1,8 @@
 "use client"
 
-import { useState, useRef } from "react"
+import type React from "react"
+
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
@@ -11,8 +13,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import RobotAnimation from "@/components/robot-animation"
+// import TechAnimation from "@/components/tech-animation"
 import CountdownTimer from "@/components/countdown-timer"
+import TypewriterEffect from "@/components/typewriter-effect"
 
 export default function RoboticsEvent() {
   const [isRegistered, setIsRegistered] = useState(false)
@@ -26,7 +29,7 @@ export default function RoboticsEvent() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8])
   const y = useTransform(scrollYProgress, [0, 1], [0, 100])
 
-  const handleRegister = (e:any) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault()
     setIsRegistered(true)
 
@@ -42,10 +45,111 @@ export default function RoboticsEvent() {
   // Event date - September 15, 2025
   const eventDate = new Date(2025, 8, 15, 9, 0, 0)
 
+  // Initialize robocontainer particles
+  useEffect(() => {
+    const container = document.getElementById("robocontainer-particles")
+    if (!container) return
+
+    // Clear any existing content
+    container.innerHTML = ""
+
+    // Create circuit-like nodes
+    const nodeCount = 30
+    const nodes: Array<{
+      element: HTMLDivElement
+      x: number
+      y: number
+      size: number
+    }> = []
+
+    for (let i = 0; i < nodeCount; i++) {
+      const node = document.createElement("div")
+      const size = Math.random() * 6 + 2
+      const x = Math.random() * 100
+      const y = Math.random() * 100
+
+      node.className = "absolute rounded-full bg-[#4dabf7]/30"
+      node.style.width = `${size}px`
+      node.style.height = `${size}px`
+      node.style.left = `${x}%`
+      node.style.top = `${y}%`
+      node.style.boxShadow = "0 0 10px rgba(77, 171, 247, 0.5)"
+
+      container.appendChild(node)
+      nodes.push({ element: node, x, y, size })
+    }
+
+    // Create connecting lines
+    const canvas = document.createElement("canvas")
+    canvas.className = "absolute inset-0 w-full h-full"
+    container.appendChild(canvas)
+
+    const resizeCanvas = () => {
+      canvas.width = container.clientWidth
+      canvas.height = container.clientHeight
+    }
+
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    const ctx = canvas.getContext("2d")
+
+    // Animation loop
+    const animate = () => {
+      if (!ctx) return
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Draw connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const nodeA = nodes[i]
+          const nodeB = nodes[j]
+
+          const dx = ((nodeB.x - nodeA.x) / 100) * canvas.width
+          const dy = ((nodeB.y - nodeA.y) / 100) * canvas.height
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < 150) {
+            const opacity = 1 - distance / 150
+            ctx.strokeStyle = `rgba(77, 171, 247, ${opacity * 0.2})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo((nodeA.x / 100) * canvas.width, (nodeA.y / 100) * canvas.height)
+            ctx.lineTo((nodeB.x / 100) * canvas.width, (nodeB.y / 100) * canvas.height)
+            ctx.stroke()
+
+            // Animate data flow along the lines
+            const pulsePosition = (Date.now() % 3000) / 3000
+            const pulseX = nodeA.x + (nodeB.x - nodeA.x) * pulsePosition
+            const pulseY = nodeA.y + (nodeB.y - nodeA.y) * pulsePosition
+
+            ctx.fillStyle = "rgba(34, 184, 207, 0.8)"
+            ctx.beginPath()
+            ctx.arc((pulseX / 100) * canvas.width, (pulseY / 100) * canvas.height, 2, 0, Math.PI * 2)
+            ctx.fill()
+          }
+        }
+      }
+
+      // Continue animation loop
+      requestAnimationFrame(animate)
+    }
+
+    // Start animation
+    const animationId = requestAnimationFrame(animate)
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(animationId)
+    }
+  }, [])
+
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#0a0a1f] to-[#0f172a]">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#0a0a1f] to-[#0f172a] justify-center items-center">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-[#0a0a1f] text-white">
+      <section ref={heroRef} className=" min-h-screen  bg-[#0a0a1f] text-white">
         <motion.div
           style={{ opacity, scale, y }}
           className="container relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center"
@@ -60,14 +164,16 @@ export default function RoboticsEvent() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Robotics and Automation <br />
+            <span className="sr-only">Robotics and Automation Live Simulation</span>
+            <TypewriterEffect text="Robotics and Automation" />
+            <br />
             <span className="bg-gradient-to-r from-[#4dabf7] to-[#22b8cf] bg-clip-text text-transparent">
-              Live Simulation
+              <TypewriterEffect text="Live Simulation" delay={1.5} />
             </span>
           </motion.h1>
 
@@ -127,9 +233,10 @@ export default function RoboticsEvent() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1f] to-transparent"></div>
           <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
 
-          {/* Animated grid background */}
+          {/* Animated grid background with robocontainer particles */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(75,192,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(75,192,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(75,192,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(75,192,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+            <div id="robocontainer-particles" className="absolute inset-0"></div>
           </div>
 
           {/* Glowing orbs */}
@@ -226,9 +333,17 @@ export default function RoboticsEvent() {
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center"
             >
-              <div className="relative h-[400px] w-full max-w-[500px]">
-                <RobotAnimation />
-              </div>
+             <div className="relative h-[700px] w-full max-w-[500px]">
+            <video 
+             src="/video/WhatsApp Video 2025-03-29 at 10.56.52 PM.mp4" 
+             autoPlay 
+             loop 
+             muted 
+             playsInline 
+            className="h-full w-full rounded-lg"
+             />
+            </div>
+
             </motion.div>
           </div>
         </div>

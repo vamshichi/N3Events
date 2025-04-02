@@ -6,8 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import HeroAnimation from "@/components/hero-animation"
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col">
+  return (<div className="flex min-h-screen flex-col justify-center items-center">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background pt-16">
         <div className="container relative z-10 px-4 py-16 md:py-24 lg:py-32">
