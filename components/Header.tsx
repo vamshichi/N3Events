@@ -28,12 +28,16 @@ const Header = () => {
           <ul className="flex items-center gap-6">
             {["Home", "About", "Events", "rals", "Contact"].map((item, index) => (
               <li key={index}>
-                <Link
-                  href={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="text-sm font-medium transition-colors hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-700 bg-clip-text"
-                >
-                  {item}
-                </Link>
+              <Link
+  href={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
+  className="relative text-sm font-medium transition-colors hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-700 bg-clip-text
+  after:absolute after:left-0 after:top-full after:translate-y-2 after:h-0.5 after:w-full after:scale-x-0 after:bg-gradient-to-r after:from-blue-500 after:to-blue-700 
+  after:transition-transform after:duration-300 hover:after:scale-x-100"
+>
+  {item}
+</Link>
+
+
               </li>
             ))}
           </ul>
