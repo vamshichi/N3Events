@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 
 export default function EventsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col justify-center items-center">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 md:py-24">
         <div className="container px-4">
