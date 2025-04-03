@@ -13,7 +13,7 @@ export default function Home() {
     
     <div className="flex min-h-screen flex-col justify-center items-center">
       {/* Hero Section */}
-     <HeroSection />
+     {/* <HeroSection /> */}
      <div className="relative  w-full overflow-hidden shadow-[0_0_30px_rgba(165,216,255,1)]">
                 <video
                   src="/video/WhatsApp Video 2025-04-03 at 15.21.20_60d5ba0a.mp4"

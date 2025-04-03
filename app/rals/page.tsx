@@ -277,7 +277,7 @@ export default function RoboticsEvent() {
       {/* Registration Section */}
      <RegistrationForm />
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
