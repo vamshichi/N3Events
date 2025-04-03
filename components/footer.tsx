@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { Mail } from "lucide-react";
+// import Link from "next/link";
+// import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#1a365d] py-12">
       <div className="container px-4">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <h3 className="mb-4 text-lg font-bold text-white">Robotics Event</h3>
             <p className="text-[#e2e8f0]">
@@ -67,9 +67,9 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-[#e2e8f0]">
-          <p>© {new Date().getFullYear()} Robotics and Automation Event. All rights reserved.</p>
+          <p>Robotics and Automation Event. All rights reserved.</p>
         </div>
       </div>
     </footer>
