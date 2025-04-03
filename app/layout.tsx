@@ -5,6 +5,7 @@ import { Menu } from "lucide-react"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 import Header from "@/components/Header"
+import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Header />
           <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

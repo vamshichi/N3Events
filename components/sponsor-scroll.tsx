@@ -1,59 +1,55 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function SponsorScroll() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  // Sample sponsor logos
   const sponsors = [
-    { name: "TechCorp", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "RoboInnovate", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "AutomationX", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "FutureTech", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "AI Systems", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "MechWorks", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "SmartFactory", logo: "/placeholder.svg?height=100&width=200" },
-    { name: "RoboSolutions", logo: "/placeholder.svg?height=100&width=200" },
-  ]
+    { name: "TechCorp", logo: "/images/sponsors/s1.jpg" },
+    { name: "RoboInnovate", logo: "/images/sponsors/s2.jpg" },
+    { name: "AutomationX", logo: "/images/sponsors/s3.jpg" },
+    { name: "FutureTech", logo: "/images/sponsors/s4.jpg" },
+    { name: "AI Systems", logo: "/images/sponsors/s5.jpg" },
+    { name: "MechWorks", logo: "/images/sponsors/s6.jpg" },
+    { name: "SmartFactory", logo: "/images/sponsors/s7.jpg" },
+    { name: "RoboSolutions", logo: "/images/sponsors/s8.jpg" },
+  ];
 
   // Duplicate sponsors for seamless scrolling
-  const allSponsors = [...sponsors, ...sponsors]
+  const allSponsors = [...sponsors, ...sponsors];
 
   return (
-    <div className="relative w-full overflow-hidden py-10">
+    <div className="relative w-full overflow-hidden bg-[#1a365d] py-6">
+      {/* Left and Right Gradient Fades */}
       <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-[#1a365d] to-transparent"></div>
       <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-[#1a365d] to-transparent"></div>
 
+      {/* Scrolling Container */}
       <motion.div
-        ref={scrollRef}
-        className="flex gap-8 py-4"
-        animate={{ x: [0, -50 * sponsors.length] }}
+        className="flex gap-8"
+        animate={{ x: ["0%", "-100%"] }}
         transition={{
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "loop",
-          duration: 30,
           ease: "linear",
+          repeat: Infinity,
+          duration: 25, // Adjust speed of scrolling
         }}
       >
         {allSponsors.map((sponsor, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-[200px] h-[100px] bg-white/10 backdrop-blur-sm rounded-lg p-4 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
+            className="flex-shrink-0 w-[180px] h-[100px] bg-white/10 backdrop-blur-md rounded-lg p-4 flex items-center justify-center shadow-md"
           >
             <Image
-              src={sponsor.logo || "/placeholder.svg"}
+              src={sponsor.logo}
               alt={sponsor.name}
               width={150}
               height={75}
-              className="max-h-full w-auto object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              className="max-h-full w-auto  opacity-80 hover:opacity-100 transition-opacity"
             />
           </div>
         ))}
       </motion.div>
     </div>
-  )
+  );
 }
-
