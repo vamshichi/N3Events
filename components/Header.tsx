@@ -26,7 +26,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex items-center gap-6">
-            {["Home", "About", "Events", "rals", "Contact"].map((item, index) => (
+            {["Home", "About", "Contact"].map((item, index) => (
               <li key={index}>
               <Link
   href={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
