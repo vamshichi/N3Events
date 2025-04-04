@@ -5,7 +5,7 @@
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#1a365d] py-12">
+    <footer className="border-t border-white/10 bg-[#1a365d] flex py-10 flex-col justify-center items-center">
       <div className="container px-4">
         {/* <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div>
@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
           </div>
         </div> */}
-        <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-[#e2e8f0]">
+        <div className=" pt-8 text-center text-sm text-[#e2e8f0]">
           <p>Robotics and Automation Event. All rights reserved.</p>
         </div>
       </div>

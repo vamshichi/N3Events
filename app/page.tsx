@@ -1,10 +1,10 @@
 import Link from "next/link"
 // import Image from "next/image"
-import { ArrowRight, Calendar, MapPin, Users } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 // import { Card, CardContent } from "@/components/ui/card"
 // import HeroAnimation from "@/components/hero-animation"
-import HeroSection from "@/components/homepage/herosection"
+// import HeroSection from "@/components/homepage/herosection"
 import FeaturedEvent from "@/components/homepage/Event"
 import ServicesSection from "@/components/homepage/Service"
 
@@ -34,7 +34,7 @@ export default function Home() {
       {/* Testimonials Section */}
       
       {/* CTA Section */}
-      <section className="bg-black w-full py-16">
+      <section className="bg-black w-full flex py-16 flex-col justify-center items-center">
       <div className="container px-4">
         <div className="flex flex-col items-center rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 text-center shadow-lg md:p-12">
           <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl">

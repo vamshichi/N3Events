@@ -19,7 +19,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <section id="register" className="py-20 bg-gradient-to-b from-[#2a4365] to-[#2b6cb0]">
+    <section id="register" className="py-20 bg-gradient-to-b from-[#2a4365] to-[#2b6cb0] flex flex-col justify-center items-center">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

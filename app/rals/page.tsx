@@ -25,6 +25,7 @@ import SponsorScroll from "@/components/sponsor-scroll"
 // import HeroSection from "@/components/Hero"
 import WhoShouldDemonstrate from "@/components/demonstration"
 import RegistrationForm from "@/components/eventreg"
+import WhyParticipate from "@/components/WhyParticipate";
 // import Footer from "@/components/footer"
 
 export default function RoboticsEvent() {
@@ -56,7 +57,7 @@ export default function RoboticsEvent() {
   // const eventDate = new Date(2025, 8, 24, 9, 0, 0)
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#0c1445] to-[#1a365d]">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#0c1445] to-[#1a365d] ">
       {/* Hero Section */}
       {/* <HeroSection /> */}
               <div className="relative  w-full overflow-hidden shadow-[0_0_30px_rgba(165,216,255,1)]">
@@ -71,7 +72,7 @@ export default function RoboticsEvent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c1445]/50 to-transparent"></div>
               </div>
       {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-b from-[#0c1445] to-[#1a365d]">
+      <section id="about" className="py-20 bg-gradient-to-b from-[#0c1445] to-[#1a365d] flex flex-col justify-center items-center">
         <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +94,7 @@ export default function RoboticsEvent() {
               className="flex flex-col justify-center space-y-6"
             >
               <p className="text-lg text-[#e2e8f0] leading-relaxed">
-                Join us for an exclusive Robotics and Automation Live Simulation event, designed for industry
+                Join us for an exclusive Robotics and Industrial Automation Live Simulation event, designed for industry
                 professionals and technology enthusiasts eager to explore cutting-edge advancements in robotics.
               </p>
               <p className="text-lg text-[#e2e8f0] leading-relaxed">
@@ -170,9 +171,10 @@ export default function RoboticsEvent() {
           </div>
         </div>
       </section>
+      <WhyParticipate />
     <WhoShouldDemonstrate />
       {/* What to Expect Section */}
-      <section className="py-20 bg-gradient-to-b from-[#1a365d] to-[#2a4365]">
+      <section className="py-20 bg-gradient-to-b from-[#1a365d] to-[#2a4365] flex flex-col justify-center items-center">
         <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -250,7 +252,7 @@ export default function RoboticsEvent() {
       </section>
 
       {/* Sponsors Section */}
-      <section className="py-20 bg-gradient-to-b from-[#1a365d] to-[#2a4365]">
+      <section className="py-20 bg-gradient-to-b from-[#1a365d] to-[#2a4365] flex flex-col justify-center items-center">
         <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -278,7 +280,7 @@ export default function RoboticsEvent() {
      <RegistrationForm />
       {/* Footer */}
       {/* <Footer /> */}
-      <footer className="border-t border-white/10 bg-[#1a365d] py-12">
+      <footer className="border-t border-white/10 bg-[#1a365d] py-12 flex flex-col justify-center items-center">
       <div className="container px-4">
          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div>
@@ -349,4 +351,3 @@ export default function RoboticsEvent() {
     </div>
   )
 }
-

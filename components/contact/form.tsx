@@ -19,7 +19,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <section id="register" className="py-20 py-16 bg-gray-900 text-white">
+    <section id="register" className="py-20 bg-gray-900 text-white flex flex-col justify-center items-center">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

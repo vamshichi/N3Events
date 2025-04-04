@@ -4,7 +4,7 @@ import Image from "next/image";
 import img from "@/public/images/WhatsApp Image 2025-04-03 at 11.40.53_63a58886.jpg"
 export default function FeaturedEvent() {
   return (
-    <section className="bg-black text-white w-full py-16">
+    <section className="bg-black text-white flex min-h-screen flex-col justify-center items-center w-full">
       <div className="container px-6">
         {/* Title */}
         <div className="mb-10 text-center">

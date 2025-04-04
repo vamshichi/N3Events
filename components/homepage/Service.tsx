@@ -41,7 +41,7 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-black text-white w-full py-16">
+    <section className="bg-black text-white w-full flex min-h-screen flex-col justify-center items-center">
       <div className="container px-6">
         {/* Title */}
         <div className="mb-10 text-center">
