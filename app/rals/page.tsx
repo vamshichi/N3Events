@@ -149,13 +149,7 @@ export default function RoboticsEvent() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#0a0a1f] to-[#0f172a] justify-center items-center">
-      {/* Hero Section */}
-      <section ref={heroRef} className=" min-h-screen  bg-[#0a0a1f] text-white">
-        <motion.div
-          style={{ opacity, scale, y }}
-          className="container relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center"
-        >
-      <div className="flex w-full justify-end">
+       <div className="flex w-full justify-end">
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -165,6 +159,13 @@ export default function RoboticsEvent() {
     <span>Season 1</span>
   </motion.div>
 </div>
+      {/* Hero Section */}
+      <section ref={heroRef} className=" min-h-screen  bg-[#0a0a1f] text-white">
+        <motion.div
+          style={{ opacity, scale, y }}
+          className="container relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center"
+        >
+     
 
 
 
