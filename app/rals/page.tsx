@@ -318,7 +318,7 @@ export default function RoboticsEvent() {
             <h3 className="mb-4 text-lg font-bold text-white">Contact</h3>
             <div className="flex items-center space-x-2 text-[#e2e8f0]">
               <Mail className="h-5 w-5 text-blue-600" />
-              <span>info@roboticsevent.com</span>
+              <span>communication@n3events.live</span>
             </div>
             <div className="mt-4">
               <h3 className="mb-2 text-lg font-bold text-white">Follow Us</h3>
