@@ -25,7 +25,7 @@ export default function Contact() {
       <section className="py-16 bg-gray-900 text-white flex justify-center">
   <div className="p-8 border border-gray-700 rounded-lg text-center max-w-md">
     <h3 className="text-3xl font-bold">Email</h3>
-    <p className="mt-2 text-lg text-gray-400">info@n3events.com</p>
+    <p className="mt-2 text-lg text-gray-400">communication@n3events.live</p>
   </div>
 </section>
 
