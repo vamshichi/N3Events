@@ -13,10 +13,45 @@ import Link from "next/link";
 export default function RegisterForm() {
   const [isRegistered, setIsRegistered] = useState(false);
   
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsRegistered(true);
+  
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+  
+    const payload = {
+      "first-name": formData.get("first-name"),
+      "last-name": formData.get("last-name"),
+      company: formData.get("company"),
+      "job-title": formData.get("job-title"),
+      "country-code": formData.get("country-code"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+  
+    try {
+      const res = await fetch("/api/eventreg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      const result = await res.json();
+  
+      if (res.ok) {
+        setIsRegistered(true);
+      } else {
+        alert(result.error || "Something went wrong.");
+      }
+    } catch (err) {
+      alert("Error submitting the form.");
+      console.error(err);
+    }
   };
+  
 
   return (
     <section id="register" className="py-20 bg-gradient-to-b from-[#2a4365] to-[#2b6cb0] flex flex-col justify-center items-center">
@@ -60,44 +95,44 @@ export default function RegisterForm() {
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="first-name" className="text-white">First Name</Label>
-                        <Input id="first-name" placeholder="Enter first name" required className="bg-white/10 text-white" />
+                        <Input id="first-name" name="first-name" placeholder="Enter first name" required className="bg-white/10 text-white" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="last-name" className="text-white">Last Name</Label>
-                        <Input id="last-name" placeholder="Enter last name" required className="bg-white/10 text-white" />
+                        <Input id="last-name" name="last-name" placeholder="Enter last name" required className="bg-white/10 text-white" />
                       </div>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="company" className="text-white">Company/Organization</Label>
-                        <Input id="company" placeholder="Enter company name" className="bg-white/10 text-white" />
+                        <Input id="company" name="company" placeholder="Enter company name" className="bg-white/10 text-white" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="job-title" className="text-white">Job Title</Label>
-                        <Input id="job-title" placeholder="Enter job title" className="bg-white/10 text-white" />
+                        <Input id="job-title" name="job-title" placeholder="Enter job title" className="bg-white/10 text-white" />
                       </div>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-2 ">
                         <Label htmlFor="country-code" className="text-white">Country Code</Label>
-                        <Input id="country-code" placeholder="+1" required className="max-w-[100px] border-[#ff6200]/30 bg-white/10 text-white" />
+                        <Input id="country-code" name="country-code" placeholder="+1" required className="max-w-[100px] border-[#ff6200]/30 bg-white/10 text-white" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-white">Contact Number</Label>
-                        <Input id="phone" type="tel" placeholder="Enter your contact number" required className="border-[#ff6200]/30 bg-white/10 text-white" />
+                        <Input id="phone" name="phone" type="tel" placeholder="Enter your contact number" required className="border-[#ff6200]/30 bg-white/10 text-white" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-white">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter email address" required className="bg-white/10 text-white" />
+                      <Input id="email" name="email" type="email" placeholder="Enter email address" required className="bg-white/10 text-white" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-white">Message</Label>
-                      <Textarea id="message" placeholder="Any specific questions?" className="bg-white/10 text-white" />
+                      <Textarea id="message" name="message" placeholder="Any specific questions?" className="bg-white/10 text-white" />
                     </div>
 
                     <div className="flex items-center space-x-2">
