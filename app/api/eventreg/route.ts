@@ -1,23 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
-// Configure nodemailer with your email service
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_SERVER || "smtp.example.com",
-  port: Number.parseInt(process.env.EMAIL_PORT || "587"),
-  secure: process.env.EMAIL_SECURE === "true",
+  service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER || "your-email@example.com",
-    pass: process.env.EMAIL_PASSWORD || "your-password",
+    user: "chvamshi03@gmail.com", // your Gmail address
+    pass: 'zfie hmte iyxt wyto', // app-specific password
   },
 })
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the request body
     const body = await request.json()
 
-    // Extract form data
     const {
       "first-name": firstName,
       "last-name": lastName,
@@ -29,15 +24,13 @@ export async function POST(request: NextRequest) {
       message,
     } = body
 
-    // Validate required fields
     if (!firstName || !lastName || !email || !phone) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    // Prepare email content
     const mailOptions = {
-      from: process.env.EMAIL_FROM || "noreply@yourdomain.com",
-      to: email,
+      from:"N3Events<chvamshi03@gmail.com>",
+      to: email, // Send to user + yourself
       subject: "Registration Confirmation",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -63,13 +56,9 @@ export async function POST(request: NextRequest) {
       `,
     }
 
-    // Send confirmation email
-    await transporter.sendMail(mailOptions)
-
-    // Also send notification to admin
     const adminMailOptions = {
-      from: process.env.EMAIL_FROM || "noreply@yourdomain.com",
-      to: process.env.ADMIN_EMAIL || "admin@yourdomain.com",
+      from:"N3Events<chvamshi03@gmail.com>",
+      to: "communication@n3events.live",
       subject: "New Registration Received",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -87,13 +76,12 @@ export async function POST(request: NextRequest) {
       `,
     }
 
+    await transporter.sendMail(mailOptions)
     await transporter.sendMail(adminMailOptions)
 
-    // Return success response
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("Registration error:", error)
     return NextResponse.json({ error: "Failed to process registration" }, { status: 500 })
   }
 }
-
